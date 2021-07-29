@@ -14,11 +14,24 @@ fetch(`https://restcountries.eu/rest/v2/name/${country}`)
         const countryData = data[0];
         console.log(countryData);
         // destructuring version: const [countryData] = data;
+
+        const html = `
+        <h2>${countryData.name}</h2>
+        
+        <img src="${countryData.flag}" alt="Flag of ${countryData.name}" title="flag of ${countryData.name}" class="flag"> 
+        
+        <h3>${countryData.region}</h3>
+        <h4>Capital: ${countryData.capital}</h4>
+        <h4>Population: ${countryData.population}</h4>
+        
+        `
     
 
-    const image = document.createElement('img');
-    image.src = countryData.flag;
-    image.classList.add('flag');
-    countryDiv.append(image);
+
+        countryDiv.innerHTML = html;
+    // const image = document.createElement('img');
+    // image.src = countryData.flag;
+    // image.classList.add('flag');
+    // countryDiv.append(image);
 });
 });
